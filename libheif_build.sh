@@ -1,6 +1,8 @@
 #!/bin/bash
 set -ex
 
+BUILD_DIR=$1  # Passed from bin/compile
+
 # Setup build environment for Heroku
 export LD_LIBRARY_PATH="$BUILD_DIR/.apt/lib:$LD_LIBRARY_PATH"
 export PKG_CONFIG_PATH="$BUILD_DIR/.apt/lib/pkgconfig:$PKG_CONFIG_PATH"
@@ -9,12 +11,12 @@ export LDFLAGS="-L$BUILD_DIR/.apt/lib"
 
 # Set installation and build directories
 INSTALL_DIR="$BUILD_DIR/.heroku/vendor/libheif"
-BUILD_DIR="/tmp/libheif-build"
+BUILD_TMP="/tmp/libheif-build"
 
 # Clean and recreate build directory
-rm -rf "$BUILD_DIR"
-mkdir -p "$BUILD_DIR"
-cd "$BUILD_DIR"
+rm -rf "$BUILD_TMP"
+mkdir -p "$BUILD_TMP"
+cd "$BUILD_TMP"
 
 # Download and extract libheif
 curl -LO https://github.com/strukturag/libheif/releases/download/v1.19.7/libheif-1.19.7.tar.gz
@@ -28,7 +30,7 @@ mkdir -p "$INSTALL_DIR/bin" "$INSTALL_DIR/lib"
 mkdir build && cd build
 
 # Configure build
-cmake -DCMAKE_INSTALL_PREFIX="$INSTALL_DIR" -DBUILD_SHARED_LIBS=ON -DBUILD_HEIF_EXAMPLES=ON ..
+cmake -DCMAKE_INSTALL_PREFIX="$INSTALL_DIR" -DBUILD_SHARED_LIBS=ON -DBUILD_HEIF_EXAMPLES=OFF ..
 
 # Compile and install
 make -j4

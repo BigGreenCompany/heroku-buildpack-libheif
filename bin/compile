@@ -1,3 +1,9 @@
 #!/bin/bash
-echo "-----> Building libheif from source"
-bash "$BUILD_DIR/libheif_build.sh"
+set -e
+
+# Heroku passes $1 = build dir, $2 = cache dir
+BUILD_DIR=$1
+CACHE_DIR=$2
+
+# Call the build script from the buildpack itself
+bash "$(dirname "$0")/../libheif_build.sh" "$BUILD_DIR"

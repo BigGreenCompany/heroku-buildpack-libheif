@@ -1,3 +1,5 @@
-echo '#!/bin/sh' > bin/detect
-echo 'echo "libheif"' >> bin/detect
-chmod +x bin/detect
+#!/bin/sh
+
+# Always apply this buildpack
+echo "libheif"
+exit 0
