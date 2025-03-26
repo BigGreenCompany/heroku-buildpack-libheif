@@ -1,0 +1,13 @@
+build-essential
+cmake
+pkg-config
+curl
+git
+libde265-dev
+libx265-dev
+libaom-dev
+libdav1d-dev
+libjpeg-dev
+libpng-dev
+libwebp-dev
+librhash-dev
