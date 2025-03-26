@@ -1,0 +1,3 @@
+echo '#!/bin/sh' > bin/detect
+echo 'echo "libheif"' >> bin/detect
+chmod +x bin/detect
