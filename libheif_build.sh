@@ -2,13 +2,13 @@
 set -ex
 
 # Setup build environment for Heroku
-export LD_LIBRARY_PATH=/app/.apt/lib:$LD_LIBRARY_PATH
-export PKG_CONFIG_PATH="/app/.apt/lib/pkgconfig:$PKG_CONFIG_PATH"
-export CFLAGS="-I/app/.apt/include"
-export LDFLAGS="-L/app/.apt/lib"
+export LD_LIBRARY_PATH="$BUILD_DIR/.apt/lib:$LD_LIBRARY_PATH"
+export PKG_CONFIG_PATH="$BUILD_DIR/.apt/lib/pkgconfig:$PKG_CONFIG_PATH"
+export CFLAGS="-I$BUILD_DIR/.apt/include"
+export LDFLAGS="-L$BUILD_DIR/.apt/lib"
 
 # Set installation and build directories
-INSTALL_DIR="/app/.heroku/vendor/libheif"
+INSTALL_DIR="$BUILD_DIR/.heroku/vendor/libheif"
 BUILD_DIR="/tmp/libheif-build"
 
 # Clean and recreate build directory
