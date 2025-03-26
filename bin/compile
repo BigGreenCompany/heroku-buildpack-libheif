@@ -7,3 +7,5 @@ CACHE_DIR=$2
 
 # Call the build script from the buildpack itself
 bash "$(dirname "$0")/../libheif_build.sh" "$BUILD_DIR"
+bash "$(dirname "$0")/../imagemagick_build.sh" "$BUILD_DIR"
+

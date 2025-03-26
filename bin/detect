@@ -2,4 +2,5 @@
 
 # Always apply this buildpack
 echo "libheif"
+echo "imagemagick"
 exit 0
