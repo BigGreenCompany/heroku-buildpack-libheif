@@ -1,0 +1,4 @@
+<script>start("/Users/queeniepeng/Documents/Receipt-AI/heroku-buildpack-libheif/");</script>
+<script>onHasParentDirectory();</script>
+<script>addRow("bin","bin",1,128,"128 B",1743021939,"3/26/25, 3:45:39 PM");</script>
+<script>addRow("libheif_build.sh","libheif_build.sh",0,1203,"1.2 kB",1743021939,"3/26/25, 3:45:39 PM");</script>
