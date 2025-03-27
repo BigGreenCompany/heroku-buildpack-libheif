@@ -34,5 +34,11 @@ LD_LIBRARY_PATH="$LIBHEIF_DIR/lib:$LD_LIBRARY_PATH" \
 make -j4
 make install
 
+# Ensure the config directory exists
+mkdir -p "$IM_INSTALL_DIR/etc/ImageMagick-7"
+
+# Copy the default configuration files from the source
+cp -r ./config/* "$IM_INSTALL_DIR/etc/ImageMagick-7/"
+
 # Confirm install
 "$IM_INSTALL_DIR/bin/convert" -version
