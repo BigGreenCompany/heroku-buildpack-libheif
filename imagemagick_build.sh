@@ -15,8 +15,8 @@ mkdir -p "$IM_BUILD_DIR" "$IM_INSTALL_DIR"
 cd "$IM_BUILD_DIR"
 
 # Download and extract ImageMagick
-curl -LO "https://imagemagick.org/download/releases/ImageMagick-$IM_VERSION.tar.gz"
-tar xzf "ImageMagick-$IM_VERSION.tar.gz"
+curl -LO "https://imagemagick.org/download/releases/ImageMagick-$IM_VERSION.tar.xz"
+tar xf "ImageMagick-$IM_VERSION.tar.xz"
 cd "ImageMagick-$IM_VERSION"
 
 # Configure ImageMagick with libheif and other formats
