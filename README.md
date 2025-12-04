@@ -24,12 +24,11 @@ librhash-dev
 
 ### Check if libheif is installed:
 ```
-heroku bash -a YOUR_APP_NAME
-convert -list format | grep HEIC
+heroku run -a YOUR_APP_NAME "strings /app/.heroku/vendor/libheif/lib/libheif.so.1 | grep -E '^[0-9]+\.[0-9]+\.[0-9]+'"
 ```
 Expected Output(Check the version: 1.19.7):
 ```
-HEIC rw+   Apple High efficiency Image Format (1.19.7)
+1.19.7
 ```
 
 ### Check if ImageMagick is installed:
