@@ -14,5 +14,8 @@ curl -L -o imagemagick.tar.gz "https://github.com/BigGreenCompany/heroku-buildpa
 # Extract into Heroku vendor directory
 tar -xzf imagemagick.tar.gz -C "$IM_INSTALL_DIR"
 
+# 🔥 Critical: Make sure Heroku can find ImageMagick libraries
+export LD_LIBRARY_PATH="$IM_INSTALL_DIR/lib:$LD_LIBRARY_PATH"
+
 # Verify installation
 "$IM_INSTALL_DIR/bin/convert" -version
