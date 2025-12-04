@@ -35,12 +35,11 @@ HEIC rw+   Apple High efficiency Image Format (1.19.7)
 ### Check if ImageMagick is installed:
 
 ```
-heroku bash -a YOUR_APP_NAME
-Which convert
-convert -version
+heroku run -a YOUR_APP_NAME "convert -version"
+
 ```
 Expected Output(Check the version: 7.1.1-46):
 ```
-Version: ImageMagick 7.1.1-46 Q16-HDRI aarch64 22747 https://imagemagick.org
+Version: ImageMagick 7.1.1-46 Q16-HDRI x86_64 22747 https://imagemagick.org
 ```
 
