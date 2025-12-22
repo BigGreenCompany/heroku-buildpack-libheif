@@ -18,10 +18,23 @@ rm -rf "$BUILD_TMP"
 mkdir -p "$BUILD_TMP"
 cd "$BUILD_TMP"
 
-# Download and extract libheif
-curl -LO https://github.com/strukturag/libheif/releases/download/v1.19.7/libheif-1.19.7.tar.gz
-tar xzf libheif-1.19.7.tar.gz
-cd libheif-1.19.7
+# Download and extract libheif (from self-hosted release)
+LIBHEIF_VERSION=1.19.7
+LIBHEIF_TARBALL="libheif-${LIBHEIF_VERSION}.tar.gz"
+LIBHEIF_URL="https://github.com/BigGreenCompany/heroku-buildpack-libheif/releases/download/v${LIBHEIF_VERSION}/${LIBHEIF_TARBALL}"
+
+echo "⬇️ Downloading libheif ${LIBHEIF_VERSION} from release"
+curl -fL "$LIBHEIF_URL" -o "$LIBHEIF_TARBALL"
+
+# Verify gzip archive
+file "$LIBHEIF_TARBALL" | grep -q gzip || {
+  echo "❌ Downloaded libheif archive is not gzip"
+  exit 1
+}
+
+# Extract and enter source dir
+tar xzf "$LIBHEIF_TARBALL"
+cd "libheif-${LIBHEIF_VERSION}"
 
 # Create install structure so Heroku doesn't drop it
 mkdir -p "$INSTALL_DIR/bin" "$INSTALL_DIR/lib"
